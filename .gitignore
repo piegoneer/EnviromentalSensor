@@ -1,0 +1,5 @@
+# Ignore the config file
+config.txt
+
+# Ignore log files which are in .csv format
+*.csv
