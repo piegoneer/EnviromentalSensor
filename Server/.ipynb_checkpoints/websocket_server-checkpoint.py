@@ -20,7 +20,7 @@ websocketIpAddress = config.get('IP_ADDRESS')
 websocketIpPort = config.get('PORT')
 
 #Settings that are specific to your needs required to setup the Websocket server
-csvfile = 'bme_sensor_values_AC_8.csv' # ENTER YOUR CSV FILENAME HERE
+csvfile = 'AC_Measurements_S2.csv' # ENTER YOUR CSV FILENAME HERE
 
 async def echo(websocket):
     async for message in websocket:
@@ -28,7 +28,7 @@ async def echo(websocket):
         await websocket.send("a")
         with open(csvfile, 'a') as f:
             current_time = datetime.now() # Get the current system time
-            formatted_time = current_time.strftime('%Y-%m-%d %H-%M-%S') # Format the time in yyyy-mm-dd HH-mm-ss
+            formatted_time = current_time.strftime('%Y-%m-%d %H:%M:%S') # Format the time in yyyy-mm-dd HH-mm-ss
             entry = str(formatted_time)  + ',' + str(message,'UTF-8')
             # print(entry)
             f.write(entry)
